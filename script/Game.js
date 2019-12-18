@@ -115,12 +115,12 @@ class Game {
 
   loadAssets = () => {
 
-    var spriteFolder = "images/";
-    sprites.background = this.loadSprite(spriteFolder+"StartScreen.png");
-    sprites.gameplay=this.loadSprite(spriteFolder+"gameplay.png");
-    sprites.gameover=this.loadSprite(spriteFolder+"gameover.png");
-    sprites.fan=this.loadSprite(spriteFolder+"fan.png");
-    sprites.life=this.loadSprite(spriteFolder+"life.png");
+    //var spriteFolder = "images/";
+    sprites.background = this.loadSprite("images/StartScreen.png");
+    sprites.gameplay=this.loadSprite("images/gameplay.png");
+    sprites.gameover=this.loadSprite("images/gameover.png");
+    sprites.fan=this.loadSprite("images/fan.png");
+    sprites.life=this.loadSprite("images/life.png");
  
   }
 
