@@ -115,7 +115,7 @@ class Game {
 
   loadAssets = () => {
 
-    var spriteFolder = "../images/";
+    var spriteFolder = "images/";
     sprites.background = this.loadSprite(spriteFolder+"StartScreen.png");
     sprites.gameplay=this.loadSprite(spriteFolder+"gameplay.png");
     sprites.gameover=this.loadSprite(spriteFolder+"gameover.png");
