@@ -42,7 +42,7 @@ class Polygon {
   
 
   setNumberofsides=()=>{
-    var no =Math.floor(Math.random()*4)+2;
+    var no =Math.floor(Math.random()*4)+3;
     var live=Math.floor(Math.random()*10);
     if(no>5)
     {
@@ -130,7 +130,7 @@ class Polygon {
     this.sideArray = Canvas2D.drawPolygon(this.properites);
     if(this.sideno>2)
     {
-    Canvas2D.drawText(this.powerNo.toString(), 18, 15, this.properites);
+    Canvas2D.drawText(this.powerNo.toString(),"15","Black", {x:this.properites.x-8,y:this.properites.y+5});
     }
     // console.log("drawing polygon");
   };

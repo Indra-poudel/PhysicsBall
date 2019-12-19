@@ -39,12 +39,8 @@ class Gameplay {
  
   update=()=>
   {
-
     this.Leftfan.rototation=this.Leftfan.rototation+this.Leftfan.speed;
     this.Rightfan.rototation=this.Rightfan.rototation+this.Rightfan.speed;
-
-
-
   }
   handleEvent=()=>
   {

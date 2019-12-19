@@ -1,18 +1,38 @@
 class Ball {
   constructor() {
+   // this.startgamesound=new Audio('sound/startGame.mp3');
+    this.wall=new Audio('sound/wall.mp3');
+    this.GoUp=new Audio('sound/laser.mp3')
     this.increasedflag=1;
     this.Startposition = { x: 175, y: 92 };
     this.curveCollision=false;
+    this.animationspeed=7;
     this.shootingRangeAngle = {
       max: 165,
       min: 15
     };
+    this.StartpositionTarget={
+      Targetx:175,
+      Targety:92,
+    }
     this.gameplayArea = {
       Top: 86,
       Left: 27,
       Right: 323,
-      Bottom: 622,
+      Bottom: 545,
     };
+    this.leftBottomPoint={
+      Targetx:12,
+      Targety:545,
+    }
+    this.RightBottomPoint={
+      Targetx:338,
+      Targety:545,
+    }
+    this.leftTopPoint={
+      Targetx:12,
+      Targety:8,
+    }
     this.frameRate = 1/60; // Seconds
     this.frameDelay = this.frameRate * 1000;
     this.shootingAngle = undefined;
@@ -20,19 +40,31 @@ class Ball {
     this.Radius = 8;
     this.xunit = undefined;
     this.yunit = undefined;
-    this.color = "#ffffff";
+    this.color =this.setcolor();
     this.isShoted = false;
     this.speed = 5;
     this.reflectionAngle = undefined;
     this.mass= 0.1, //kg// 1px = 1cm
-    this.restitution= -1.5,
+    this.restitution= -2,
     this.Cd = 0.47;  // Dimensionless
     this.rho = 1.22; // kg / m^3
     this.A = Math.PI * this.Radius * this.Radius / (10000); // m^2
     this.ag = 9.81;
+    this.animation=false;
+    this.path1=true;
+    this.path2=false;
+    this.path3=false;
+    
+  
+    //this.calculatepath();
 
   }
-
+    setcolor=()=>
+    {
+      console.log("Why",ballSelect[0]);
+      return ballSelect[0];
+     
+    }
   loop=()=>
   {
     
@@ -76,26 +108,25 @@ class Ball {
   wallCollision=()=>{
     if(this.gameplayArea.Left>this.position.x-this.Radius+this.xunit||this.gameplayArea.Right<this.position.x+this.Radius+this.xunit)
     {
-      //this.calculateXunitYunit();
-     // this.xunit*= ball.restitution;
+    this.wall.play();
       this.xunit=this.xunit*-1;
-     // this.position.x = this.gameplayArea.Top - this.r;
-      // this.shootingAngle= Math.PI -this.shootingAngle;
-      // this.calculateXunitYunit();
+   
     }
-    if(this.gameplayArea.Bottom<this.position.y+this.Radius)
+    if(this.gameplayArea.Bottom<this.position.y+this.Radius+this.yunit)
     {
-      
-      this.isShoted=false;
-     this.position.x=this.Startposition.x;
-     this.position.y=this.Startposition.y      
-     this.increasedflag++;
+    
+      this.color="Yellow";
+     this.animation=true;
+     this.GoUp.play();
+     //this.startgamesound.play();
+     
+   
     }
     if(this.gameplayArea.Top>this.position.y-this.Radius+this.yunit)
     {
+      this.wall.play();
       this.yunit=this.yunit*-1;
-      // this.shootingAngle= Math.PI*2 -this.shootingAngle;
-      // this.calculateXunitYunit();
+     
 
     }
   }
@@ -121,36 +152,104 @@ class Ball {
   };
 
   update = function() {
-    if (this.isShoted== true ) {    
+    if (this.isShoted== true && this.animation==false) {    
   this.loop();
       this.wallCollision();
       
     }
+    if(this.animation==true)
+    {
+      if(this.position.x< Canvas2D.canvas.width/2)
+      {
+      if(this.position.x>this.leftBottomPoint.Targetx && this.path1==true)
+      {
+      this.position.x=this.position.x-this.animationspeed;
+      console.log("right",this.path2);
+      }
+      if(this.position.x<15 &&this.path1==true)
+      {
+         this.path1=false;
+        this.path2=true;
+      }
+      if( this.path2==true)
+      {
+        console.log(this.path1,this.path2);
+        this.position.y=this.position.y-this.animationspeed;
+      
+      }
+      if(this.position.y < 0 && this.path2==true)
+      {
+        this.path2=false;
+        this.path3=true;
+        console.log(this.position.y);
+      }
+      if(this.path3==true)
+      {
+        this.path2=false;
+        this.calculateAngle(this.position,this.StartpositionTarget);
+        this.calculateXunitYunit();
+        this.position.x=this.position.x+this.xunit;
+        this.position.y=this.position.y+this.yunit;
+      }
+      if(this.Startposition.x-this.position.x+this.xunit<0 &&this.path3==true)
+      {
+        console.log("startpos",Math.abs(this.position.x-this.Startposition.x));
+        this.path3=false;
+        this.path1=true;
+        this.animation=false;
+        this.isShoted=false;     
+        this.increasedflag++;
+        this.color= ballSelect[0];
+      }
+    }
+    else
+    {
+      if(this.position.x<this.RightBottomPoint.Targetx && this.path1==true)
+      {
+      this.position.x=this.position.x+this.animationspeed;
+      console.log("right",this.path2);
+      }
+      if(this.position.x>338 &&this.path1==true)
+      {
+         this.path1=false;
+        this.path2=true;
+      }
+      if( this.path2==true)
+      {
+        console.log(this.path1,this.path2);
+        this.position.y=this.position.y-this.animationspeed;
+      
+      }
+      if(this.position.y < 0 && this.path2==true)
+      {
+        this.path2=false;
+        this.path3=true;
+        console.log(this.position.y);
+      }
+      if(this.path3==true)
+      {
+        this.path2=false;
+        this.calculateAngle(this.position,this.StartpositionTarget);
+        this.calculateXunitYunit();
+        this.position.x=this.position.x+this.xunit;
+        this.position.y=this.position.y+this.yunit;
+      }
+      if(this.position.x-this.Startposition.x+this.xunit<0 &&this.path3==true)
+      {
+        console.log("startpos",Math.abs(this.position.x-this.Startposition.x));
+        this.path3=false;
+        this.path1=true;
+        this.animation=false;
+        this.isShoted=false;     
+        this.increasedflag++;
+        this.color=ballSelect[0];
+      }
+    }
+  }
   };
 
   handleEvent = function() {
-    // if (GameState.currentScreen === GameState.GamePlayScreen) {
-    //   //----calcuclate the x and y to the particular direction and find path point
-    //   if (this.isShoted == false) {
-    //     // this.dotLine.position.Targetx = Mouse.position.x;
-    //     // this.dotLine.position.Targety = Mouse.position.y;
-    //     // this.dotLine.dotArray = calcStraightLine(
-    //     //   this.position,
-    //     //   this.dotLine.position
-    //     // );
-    //   }
-    //   //------------------------------------------------------------------
-    //   //-------check where mouse clicked or not to shoot the ball
-    //   if (Mouse.shoot == true  &&this.isShoted==false) {
-    //     this.isShoted = true;
-    //    // console.log("Only one time");
-        
-    //     this.calculateAngle(this.position,this.dotLine.position);
-    //     this.calculateXunitYunit();  
-    //     Mouse.shoot = false;   
-    //   }
-       
-    // }
+ 
   };
 
   draw = () => {
@@ -167,4 +266,3 @@ class Ball {
   };
 }
 
-let ball = new Ball();

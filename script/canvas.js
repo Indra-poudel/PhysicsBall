@@ -52,6 +52,10 @@ Canvas2D.drawlive=function(sprite, x,y)
 }
 Canvas2D.drawBall = function(Radius, position, color) {
   Canvas2D.canvasContext.beginPath();
+  // Canvas2D.canvasContext.shadowBlur = 20;
+  // Canvas2D.canvasContext.shadowColor = "Red";
+  //  Canvas2D.canvasContext.shadowOffsetX = 2;
+  //  Canvas2D.canvasContext.shadowOffsetY = 2;
   Canvas2D.canvasContext.arc(
     position.x,
     position.y,
@@ -59,6 +63,18 @@ Canvas2D.drawBall = function(Radius, position, color) {
     0,
     Math.PI * 2,
     false
+  );
+  Canvas2D.canvasContext.fillStyle = color;
+
+  Canvas2D.canvasContext.fill();
+  Canvas2D.canvasContext.closePath();
+};
+Canvas2D.DrawRect = function(color) {
+  Canvas2D.canvasContext.rect(
+    0,
+    0,
+    Canvas2D.canvas.width,
+    Canvas2D.canvas.height
   );
   Canvas2D.canvasContext.fillStyle = color;
   Canvas2D.canvasContext.fill();
@@ -155,41 +171,11 @@ Canvas2D.drawCurve = function(StartPoint, EndPoint, ControlPoint,ball) {
   Canvas2D.canvasContext.closePath();
   return curvecollision;
 };
-Canvas2D.drawText=function(Text,font,size,pos)
+Canvas2D.drawText=function(Text,size,color,pos)
 {
-  Canvas2D.canvasContext.font = "15px Arial";
-  Canvas2D.canvasContext.fillStyle = "Black";
-  Canvas2D.canvasContext.fillText(Text,pos.x-8,pos.y+5);
+  Canvas2D.canvasContext.font = size+ "px Comic Sans MS";
+  Canvas2D.canvasContext.fillStyle = color;
+  Canvas2D.canvasContext.fillText(Text,pos.x,pos.y);
 }
-Canvas2D.YourScore=function()
-{
 
-  Canvas2D.canvasContext.font =  "40px Comic Sans MS";
-  Canvas2D.canvasContext.fillStyle = "White";
-  Canvas2D.canvasContext.fillText("Your Score",70,100);
- // console.log("your score");
-}
-Canvas2D.YourS=function(score)
-{
 
-  Canvas2D.canvasContext.font =  "40px Comic Sans MS";
-  Canvas2D.canvasContext.fillStyle = "White";
-  Canvas2D.canvasContext.fillText(score,150,150);
- // console.log("your score");
-}
-Canvas2D.BestScore=function()
-{
-
-  Canvas2D.canvasContext.font =  "40px Comic Sans MS";
-  Canvas2D.canvasContext.fillStyle = "White";
-  Canvas2D.canvasContext.fillText("High Score",70,250);
- // console.log("your score");
-}
-Canvas2D.BestS=function(highscore)
-{
-
-  Canvas2D.canvasContext.font =  "40px Comic Sans MS";
-  Canvas2D.canvasContext.fillStyle = "White";
-  Canvas2D.canvasContext.fillText(highscore,150,300);
- // console.log("your score");
-}

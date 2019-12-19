@@ -1,33 +1,34 @@
 class startscreen {
   constructor() {
-    (this.guideIcon = {}),
+    (this.guideIcon = {
+      Top: 5,
+      Bottom: 24,
+      Left: 320,
+      Right: 340
+    }),
       (this.settingIcon = {
         Top: 5,
         Bottom: 24,
         Left: 10,
         Right: 29
       }),
-      (this.ballIcon = {
-        x: undefined,
-        y: undefined
-      }),
-      (this.bestscore = {
-        x: undefined,
-        y: undefined
+      (this.SelectballIcon = {
+        Top: 325,
+        Bottom:374,
+        Left: 0,
+        Right: 690
       }),
       (this.recordIcon = {
-        x: undefined,
-        y: undefined
+        Top: 384,
+      Bottom:434 ,
+      Left: 0,
+      Right: 690
       });
     this.dragline = {
       Top: 460,
       Bottom: 575,
       Left: 29,
       Right: 350
-    };
-    this.fingerIcon = {
-      x: undefined,
-      y: undefined
     };
   }
 
@@ -47,6 +48,42 @@ class startscreen {
       if (Mouse.leftDown == true) {
         console.log("Setting Screen");
           GameState.currentScreen=GameState.settingIcon;
+        
+      }
+    }
+    if (
+      this.guideIcon.Top < Mouse.position.y &&
+      this.guideIcon.Bottom > Mouse.position.y &&
+      this.guideIcon.Left < Mouse.position.x &&
+      this.guideIcon.Right > Mouse.position.x
+    ) {
+      if (Mouse.leftDown == true) {
+        console.log("Guide Screen");
+          GameState.currentScreen=GameState.GameGuideScreen;
+        
+      }
+    }
+    if (
+      this.SelectballIcon.Top < Mouse.position.y &&
+      this.SelectballIcon.Bottom > Mouse.position.y &&
+      this.SelectballIcon.Left < Mouse.position.x &&
+      this.SelectballIcon.Right > Mouse.position.x
+    ) {
+      if (Mouse.leftDown == true) {
+        console.log("Select ball Screen");
+          GameState.currentScreen=GameState.BallSelectScreen;
+        
+      }
+    }
+    if (
+      this.recordIcon.Top < Mouse.position.y &&
+      this.recordIcon.Bottom > Mouse.position.y &&
+      this.recordIcon.Left < Mouse.position.x &&
+      this.recordIcon.Right > Mouse.position.x
+    ) {
+      if (Mouse.leftDown == true) {
+        console.log("record Screen");
+          GameState.currentScreen=GameState.RecordScreen;
         
       }
     }
