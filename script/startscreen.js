@@ -75,17 +75,17 @@ class startscreen {
         
       }
     }
-    if (
-      this.recordIcon.Top < Mouse.position.y &&
-      this.recordIcon.Bottom > Mouse.position.y &&
-      this.recordIcon.Left < Mouse.position.x &&
-      this.recordIcon.Right > Mouse.position.x
-    ) {
-      if (Mouse.leftDown == true) {
-        console.log("record Screen");
-          GameState.currentScreen=GameState.RecordScreen;
+    // if (
+    //   this.recordIcon.Top < Mouse.position.y &&
+    //   this.recordIcon.Bottom > Mouse.position.y &&
+    //   this.recordIcon.Left < Mouse.position.x &&
+    //   this.recordIcon.Right > Mouse.position.x
+    // ) {
+    //   if (Mouse.leftDown == true) {
+    //     console.log("record Screen");
+    //       GameState.currentScreen=GameState.RecordScreen;
         
-      }
+    //   }
     }
     // ending of 1)--------------------------------
     // 2) ------drag detection in stratscreen -----------

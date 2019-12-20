@@ -77,7 +77,7 @@ class Ball {
           Fy = (isNaN(Fy) ? 0 : Fy);
           
               // Calculate acceleration ( F = ma )
-          var ax = Fx / this.mass;
+         var ax = Fx / this.mass;
           var ay = this.ag + (Fy / this.mass);
               // Integrate to get velocity
           this.xunit += ax*this.frameRate;
