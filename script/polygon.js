@@ -43,7 +43,7 @@ class Polygon {
 
   setNumberofsides=()=>{
     var no =Math.floor(Math.random()*4)+3;
-    var live=Math.floor(Math.random()*10);
+    var live=Math.floor(Math.random()*8);
     if(no>5)
     {
       no=45;
@@ -113,17 +113,7 @@ class Polygon {
   };
 
   update = function() {
-    // if (this.checkCollision()) {
-    // //   var dx = ball.position.x - this.properites.x;
-    // //   var dy = ball.position.y - this.properites.y;
-    // //   var collision_angle = Math.atan2(dy, dx);
-    // //   console.log("Angle", (collision_angle * 180) / Math.PI);
-    // //   ball.shootingAngle= Math.PI -collision_angle;
-    // //  ball.calculateXunitYunit();
-    // ball.xunit=ball.xunit*-1;
-    // ball.yunit=ball.yunit*-1;
-    // this.powerNo--;
-    // }
+ 
   };
   handleEvent = function() {};
   draw = () => {

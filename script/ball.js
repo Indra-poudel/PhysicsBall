@@ -138,17 +138,7 @@ class Ball {
   };
 
   drawDotted = () => {
-    // if (this.isShoted == false) {
-    //   for (var i = 0; i < this.dotLine.dotArray.length; i = i + 20) {
-    //     var x = {
-    //       position: {
-    //         x: this.dotLine.dotArray[i].x,
-    //         y: this.dotLine.dotArray[i].y
-    //       }
-    //     };
-    //     Canvas2D.drawBall(ball.Radius - 3, x.position, ball.color);
-    //   }
-    // }
+   
   };
 
   update = function() {

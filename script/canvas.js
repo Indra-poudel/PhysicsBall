@@ -52,10 +52,10 @@ Canvas2D.drawlive=function(sprite, x,y)
 }
 Canvas2D.drawBall = function(Radius, position, color) {
   Canvas2D.canvasContext.beginPath();
-  // Canvas2D.canvasContext.shadowBlur = 20;
-  // Canvas2D.canvasContext.shadowColor = "Red";
-  //  Canvas2D.canvasContext.shadowOffsetX = 2;
-  //  Canvas2D.canvasContext.shadowOffsetY = 2;
+  Canvas2D.canvasContext.shadowBlur = 15;
+  Canvas2D.canvasContext.shadowColor = color;
+   Canvas2D.canvasContext.shadowOffsetX = 2;
+   Canvas2D.canvasContext.shadowOffsetY = 2;
   Canvas2D.canvasContext.arc(
     position.x,
     position.y,
@@ -68,6 +68,26 @@ Canvas2D.drawBall = function(Radius, position, color) {
 
   Canvas2D.canvasContext.fill();
   Canvas2D.canvasContext.closePath();
+  Canvas2D.canvasContext.shadowBlur = 0;
+  //Canvas2D.canvasContext.shadowColor = color;
+  Canvas2D.canvasContext.shadowOffsetX = 0;
+  Canvas2D.canvasContext.shadowOffsetY = 0;
+};
+Canvas2D.drawBalldot = function(Radius, position, color) {
+  Canvas2D.canvasContext.beginPath();
+  Canvas2D.canvasContext.arc(
+    position.x,
+    position.y,
+    Radius,
+    0,
+    Math.PI * 2,
+    false
+  );
+  Canvas2D.canvasContext.fillStyle = color;
+
+  Canvas2D.canvasContext.fill();
+  Canvas2D.canvasContext.closePath();
+ 
 };
 Canvas2D.DrawRect = function(color) {
   Canvas2D.canvasContext.rect(

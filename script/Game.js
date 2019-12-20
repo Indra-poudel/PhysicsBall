@@ -62,17 +62,6 @@ class Game {
   }
   CheckIfAllBallsGoesUp=()=>
   {
-  //  for(var i=0;i<this.ballarray.length;i++)
-  //  {
-  //    var temp=i;
-
-  //    if(this.ballarray[temp].position.x==this.Ballinitialposition.x)
-  //    {
-  //      return false;
-  //    }
-     
-  //  }
-  //  return true
    
   if(this.checkifallBallshooted())
     {
@@ -104,7 +93,7 @@ class Game {
             y: this.dotLine.dotArray[i].y
           }
         };
-        Canvas2D.drawBall(8 - 3, x.position, ballSelect[0]);
+        Canvas2D.drawBalldot(8 - 3, x.position, ballSelect[0]);
       }
     }
   };

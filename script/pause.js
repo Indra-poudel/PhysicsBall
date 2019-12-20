@@ -34,7 +34,7 @@ class  PauseScreen {
     draw = () => {
     var   score= localStorage.getItem("score");
     var  hscore= localStorage.getItem("Highscore");
-      Canvas2D.drawImage(sprites.gameover, { x: 0, y: 0 }, 0, { x: 0, y: 0 });
+    Canvas2D.drawImage(sprites.gameover, { x: 0, y: 0 }, 0, { x: 0, y: 0 });
     Canvas2D.drawText("Your score","30","White",{x:100,y:100});
     Canvas2D.drawText(score,"30","White",{x:160,y:150});
     Canvas2D.drawText("Best Score","30","White",{x:100,y:250});

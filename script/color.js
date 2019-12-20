@@ -16,5 +16,3 @@ var Color={
         15: "#00ff43",
         16: "00ff68",        
 };
-
-console.log(Color[1]);
