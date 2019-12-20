@@ -244,7 +244,7 @@ class Ball {
 
   draw = () => {
  //  this.curveCollision= Canvas2D.drawCurve({x:0,y:300}, {x:323,y:300}, {x:156,y:350},{x:this.position.x,y:this.position.y+this.Radius})
-    Canvas2D.drawBall(this.Radius, this.position, this.color);
+    Canvas2D.drawBall(this.Radius, this.position, ballSelect[0]);
    // this.drawDotted();
 
   };
